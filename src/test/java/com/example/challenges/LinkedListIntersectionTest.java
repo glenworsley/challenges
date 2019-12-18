@@ -14,18 +14,18 @@ class LinkedListIntersectionTest {
 
     @Test
     void getValueAtIntersectingNode() {
-        LinkedList<Integer> listA = new LinkedList<>(Arrays.asList(3,7,8,10));
-        LinkedList<Integer> listB = new LinkedList<>(Arrays.asList(99,1,8,10));
-        Optional<Integer> result = linkedListIntersection.getValueAtIntersectingNode(listA, listB);
+        LinkedList<Object> listA = new LinkedList<>(Arrays.asList(3,7,8,10));
+        LinkedList<Object> listB = new LinkedList<>(Arrays.asList(99,1,8,10));
+        Optional<Object> result = linkedListIntersection.getValueAtIntersectingNode(listA, listB);
         assertTrue(result.isPresent());
         assertEquals(8, result.get());
     }
 
     @Test
     void returnEmptyIfNoIntersectingNode() {
-        LinkedList<Integer> listA = new LinkedList<>(Arrays.asList(3,7,8,10));
-        LinkedList<Integer> listB = new LinkedList<>(Arrays.asList(99,1,9,11));
-        Optional<Integer> result = linkedListIntersection.getValueAtIntersectingNode(listA, listB);
+        LinkedList<Object> listA = new LinkedList<>(Arrays.asList(3,7,8,10));
+        LinkedList<Object> listB = new LinkedList<>(Arrays.asList(99,1,9,11));
+        Optional<Object> result = linkedListIntersection.getValueAtIntersectingNode(listA, listB);
         assertFalse(result.isPresent());
     }
 }
