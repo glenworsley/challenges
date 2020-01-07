@@ -23,6 +23,13 @@ public class GameBoard {
         return Arrays.hashCode(isAlive);
     }
 
+    public boolean[][] getNeighbours(int x, int y) {
+        boolean[][] neighbours = new boolean[3][3];
+        neighbours[0][0] = isAlive[x - 1][y + 1];
+        neighbours[0][1] = isAlive[x][y + 1];
+        return neighbours;
+    }
+
     /*void print() {
         boolean printing = false;
         for (int i = 0; i < alive.length; i++) {

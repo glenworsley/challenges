@@ -1,5 +1,6 @@
 package com.example.challenges;
 
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -87,5 +88,26 @@ class GameBoardTest {
         };
         GameBoard board2 = new GameBoard(data2);
         assertThat(board1, is(equalTo(board2)));
+    }
+
+    @Test
+    public void testGetNeighbours() {
+        boolean[][] data = {
+                {
+                        true, false, true
+                },
+                {
+                        true, false, true
+                },
+                {
+                        true, false, true
+                },
+        };
+        GameBoard gameBoard = new GameBoard(data);
+        boolean[][] neighbours = gameBoard.getNeighbours(1,1);
+        assertThat(neighbours.length, is(equalTo(3)));
+        assertThat(neighbours[0].length, is(equalTo(3)));
+        assertTrue(neighbours[0][0]);
+        assertTrue(neighbours[0][0]);
     }
 }
