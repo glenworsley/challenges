@@ -2,6 +2,7 @@ package com.example.challenges;
 
 import org.junit.jupiter.api.Test;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,39 +18,25 @@ class ConwaysGameOfLifeTest {
     void playWithRuleOneOnly() {
 
         ConwaysGameOfLife game = new ConwaysGameOfLife();
-        int steps = 1;
+        //int steps = 1;
         //true indicates the cell is alive, false - it is dead.
-        boolean[][] data = {
-                {
-                    true, false, false, false
-                },
-                {
-                    false, false, true, false
-                },
-                {
-                    false, false, true, false
-                },
-                {
-                    true, true, true, false
-                },
-        };
-        GameBoard gameBoard = new GameBoard(data);
+        List<Point> liveCells = new ArrayList<>();
+        liveCells.add(new Point(0,0));
+        liveCells.add(new Point(1,0));
+        liveCells.add(new Point(2,0));
+        liveCells.add(new Point(2, 1));
+        liveCells.add(new Point(2, 2));
+        liveCells.add(new Point(0, 3));
+        GameBoard gameBoard = new GameBoard(liveCells);
+
+        List<Point> expectedLiveCells = new ArrayList<>();
+        expectedLiveCells.add(new Point(1,0));
+        expectedLiveCells.add(new Point(2,0));
+        expectedLiveCells.add(new Point(2, 1));
+        GameBoard expectedGameBoard = new GameBoard(expectedLiveCells);
+
         GameBoard result = game.play(gameBoard);
-        boolean[][] expectedResultAfterOneStep = {
-                {
-                        false, false, false, false
-                },
-                {
-                        false, false, false, false
-                },
-                {
-                        false, false, true, false
-                },
-                {
-                        false, true, true, false
-                },
-        };
-        GameBoard expectedStepOneResult = new GameBoard(expectedResultAfterOneStep);
-        assertEquals(expectedStepOneResult, result);
+
+        assertEquals(expectedGameBoard, result);
     }
 }

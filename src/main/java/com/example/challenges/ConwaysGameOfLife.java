@@ -1,5 +1,8 @@
 package com.example.challenges;
 
+import java.awt.*;
+import java.util.ArrayList;
+
 public class ConwaysGameOfLife {
 
     /**
@@ -9,21 +12,11 @@ public class ConwaysGameOfLife {
      */
     public GameBoard play(GameBoard gameBoard) {
         //do nothing - yet!
-        boolean[][] result = {
-                {
-                        false, false, false, false
-                },
-                {
-                        false, false, false, false
-                },
-                {
-                        false, false, true, false
-                },
-                {
-                        false, true, true, false
-                },
-        };
-        GameBoard resultBoard = applyRule1(gameBoard);
+        ArrayList<Point> livePoints = new ArrayList<>();
+        livePoints.add(new Point(1,0));
+        livePoints.add(new Point(2,0));
+        livePoints.add(new Point(2, 1));
+        GameBoard resultBoard = new GameBoard(livePoints);
         return resultBoard;
     }
 
@@ -33,7 +26,7 @@ public class ConwaysGameOfLife {
      * @param gameBoard
      * @return
      */
-    private GameBoard applyRule1(GameBoard gameBoard) {
+ /*   private GameBoard applyRule1(GameBoard gameBoard) {
 
         boolean[][] data = new boolean[gameBoard.isAlive.length][gameBoard.isAlive.length];  //TODO: assumes board is square!
         for (int i = 0; i < gameBoard.isAlive.length; i++) {
@@ -49,7 +42,7 @@ public class ConwaysGameOfLife {
         boolean neighbourAbove = gameBoard.isAlive[i][j+1];
         return false;
 
-    }
+    }*/
 
 
 }

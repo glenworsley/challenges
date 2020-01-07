@@ -1,13 +1,15 @@
 package com.example.challenges;
 
-import java.util.Arrays;
+import java.awt.*;
+import java.util.List;
+import java.util.Objects;
 
 public class GameBoard {
 
-    boolean[][] isAlive;
+    private List<Point> livePoints;
 
-    public GameBoard(boolean[][] data) {
-        this.isAlive = data;
+    public GameBoard(List<Point> livePoints) {
+        this.livePoints = livePoints;
     }
 
     @Override
@@ -15,30 +17,11 @@ public class GameBoard {
         if (this == o) return true;
         if (!(o instanceof GameBoard)) return false;
         GameBoard gameBoard = (GameBoard) o;
-        return Arrays.deepEquals(isAlive, gameBoard.isAlive);
+        return Objects.equals(livePoints, gameBoard.livePoints);
     }
 
     @Override
     public int hashCode() {
-        return Arrays.hashCode(isAlive);
+        return Objects.hash(livePoints);
     }
-
-    public boolean[][] getNeighbours(int x, int y) {
-        boolean[][] neighbours = new boolean[3][3];
-        neighbours[0][0] = isAlive[x - 1][y + 1];
-        neighbours[0][1] = isAlive[x][y + 1];
-        return neighbours;
-    }
-
-    /*void print() {
-        boolean printing = false;
-        for (int i = 0; i < alive.length; i++) {
-            for (int j = 0; j < alive[i].length; j++) {
-                if (alive[i][j] && !printing) {
-                    printing = true;
-                }
-
-            }
-        }
-    }*/
 }
